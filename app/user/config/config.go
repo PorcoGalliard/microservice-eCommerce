@@ -2,7 +2,7 @@ package config
 
 import "github.com/PorcoGalliard/eCommerce-Microservice/pkg/config"
 
-type Config struct {
+type UserConfig struct {
 	App config.AppConfig
 	Database config.PostgreConfig
 	Redis config.RedisConfig

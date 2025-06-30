@@ -15,7 +15,7 @@ import (
 
 func main() {
 	log.SetupLogger()
-	config := sharedConfig.LoadConfig(&config.Config{},
+	config := sharedConfig.LoadConfig(&config.UserConfig{},
 		sharedConfig.WithConfigPath("files/config"),
 		sharedConfig.WithConfigFile("user_service_config"),
 		sharedConfig.WithConfigType("yaml"),

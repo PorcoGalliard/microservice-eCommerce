@@ -10,7 +10,7 @@ func SetupLogger() {
 		ForceColors: true,
 		FullTimestamp: true,
 	})
-	log.Info("Logger initiated with Logrus")
+	log.Info("✅ Logger initiated with Logrus")
 
 	Logger = log
 }
