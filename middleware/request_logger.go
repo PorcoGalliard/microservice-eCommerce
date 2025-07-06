@@ -19,10 +19,8 @@ func RequestLogger() gin.HandlerFunc {
 		ctx := context.WithValue(timeoutCtx, "request_id", requestID)
 		c.Request = c.Request.WithContext(ctx)
 
-		c.Next()
-
 		start := time.Now()
-
+		c.Next()
 		latency := time.Since(start)
 
 		requestLog := logrus.Fields{

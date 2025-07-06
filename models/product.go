@@ -19,4 +19,9 @@ type (
 		Action string `json:"action"`
 		ProductCategory
 	}
+
+	ProductManagementParameter struct {
+		Action string `json:"action"`
+		Product
+	}
 )

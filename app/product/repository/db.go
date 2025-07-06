@@ -2,14 +2,19 @@ package repository
 
 import (
 	"context"
+	"errors"
 
 	"github.com/PorcoGalliard/eCommerce-Microservice/models"
+	"gorm.io/gorm"
 )
 
 func (r *ProductRepository) FindProductByID(ctx context.Context, productID int64) (*models.Product, error) {
 	var product models.Product
 	err := r.Database.WithContext(ctx).Table("product").Where("id = ?", productID).Last(&product).Error
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return &models.Product{}, nil
+		}
 		return nil, err
 	}
 	return &product, nil
@@ -19,6 +24,9 @@ func (r *ProductRepository) FindProductCategoryByID(ctx context.Context, product
 	var productCategory models.ProductCategory
 	err := r.Database.WithContext(ctx).Table("product_category").Where("id = ?", productCategoryID).Last(&productCategory).Error
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return &models.ProductCategory{}, nil
+		}
 		return nil, err
 	}
 	return &productCategory, nil

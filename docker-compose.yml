@@ -3,7 +3,7 @@ name: eCommerce-microservices
 services:
   postgresql:
     image: postgres:17.4-alpine
-    container_name: docker-postgresql
+    container_name: postgresql
     restart: always
     environment:
       POSTGRES_USER: ultrasur
@@ -15,7 +15,7 @@ services:
       - postgres-vol:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
-    container_name: docker-pgadmin4
+    container_name: pgadmin4
     restart: always
     ports:
       - "8888:80"
@@ -26,7 +26,7 @@ services:
       - pgadmin-vol:/var/lib/pgadmin/data
   redis:
     image: redis:alpine
-    container_name: docker-redis
+    container_name: redis
     restart: always
     ports:
       - "6379:6379"
